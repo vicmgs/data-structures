@@ -1,33 +1,33 @@
 var Queue = function() {
   var someInstance = {};
 
-  var counter = 0;
-  var frontStack = 0;
-  var backStack = 0;
+  someInstance.counter = 0;
+  someInstance.frontStack = 0;
+  someInstance.backStack = 0;
   // Use an object with numeric keys to store values
-  var storage = {};
+  someInstance.storage = {};
 
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
-    storage[backStack] = value;
-    counter++;
-    backStack++;
+    someInstance.storage[someInstance.backStack] = value;
+    someInstance.counter++;
+    someInstance.backStack++;
   };
 
   someInstance.dequeue = function() {
-    if (counter > 0) {
-      counter--;
+    if (someInstance.counter > 0) {
+      someInstance.counter--;
     }
-    var temp = storage[frontStack];
-    delete(storage[frontStack]);
-    frontStack++;
+    var temp = someInstance.storage[someInstance.frontStack];
+    delete(someInstance.storage[someInstance.frontStack]);
+    someInstance.frontStack++;
     return temp;
 
   };
 
   someInstance.size = function() {
-    return counter;
+    return someInstance.counter;
   };
 
   return someInstance;

@@ -35,13 +35,9 @@ queueMethods.dequeue = function() {
   this.frontTrack++;
 
   return temp;
-  
+
 };
 
 queueMethods.size = function() {
   return this.counter;
 };
-
-
-
-

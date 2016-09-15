@@ -24,7 +24,7 @@ stackMethods.pop = function() {
   delete this.storage[this.counter];
 
   return temp;
-  
+
 };
 
 stackMethods.size = function() {
