@@ -40,12 +40,12 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
   
   var index = this[fromNode].indexOf(toNode);
   if (index !== -1) {
-    this[fromNode] = this[fromNode].slice(0, index) + this[fromNode].slice(index + 1);
+    this[fromNode].splice(index, 1);
   }
 
   var index = this[toNode].indexOf(fromNode);
   if (index !== -1) {
-    this[toNode] = this[toNode ].slice(0, index) + this[toNode].slice(index + 1);
+    this[toNode].splice(index, 1);
   }
 
 };
