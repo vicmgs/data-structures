@@ -2,8 +2,7 @@ var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
   
-  // your code here
-  newTree.children = [];  // fix me
+  newTree.children = []; 
   extend(newTree, treeMethods);
 
   return newTree;
@@ -19,6 +18,19 @@ var treeMethods = {};
 
 treeMethods.addChild = function(value) {
   this.children.push(Tree(value));
+};
+
+treeMethods.removeNode = function(value, node) {
+  node = node || this;
+
+  if (node.value === value) {
+    node.value = null;
+    node.children = [];
+  } else {
+    for (var i = 0; i < node.children.length; i++) {
+      node.children[i].removeNode(value, node.children[i]); 
+    }
+  }
 };
 
 
