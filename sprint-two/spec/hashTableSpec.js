@@ -31,8 +31,12 @@ describe('hashTable', function() {
 
   it('should not contain values that were removed', function() {
     hashTable.insert('Steven', 'Tyler');
+    hashTable.insert('Abe', 'Tyler1');
+    hashTable.insert('Brian', 'Tyler2');
     hashTable.remove('Steven');
     expect(hashTable.retrieve('Steven')).to.equal(undefined);
+    expect(hashTable.retrieve('Abe')).to.equal('Tyler1');
+    expect(hashTable.retrieve('Brian')).to.equal('Tyler2');
   });
 
   it('should handle hash function collisions', function() {
