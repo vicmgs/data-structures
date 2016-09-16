@@ -23,12 +23,11 @@ treeMethods.addChild = function(value) {
 treeMethods.removeNode = function(value, node) {
   node = node || this;
 
-  if (node.value === value) {
-    node.value = null;
-    node.children = [];
-  } else {
-    for (var i = 0; i < node.children.length; i++) {
-      node.children[i].removeNode(value, node.children[i]); 
+  for (var i = 0; i < node.children.length; i++) {
+    if (node.children[i].value === value) {
+      node.children.splice(i, 1);
+    } else {
+      node.removeNode(value, node.children[i]); 
     }
   }
 };
