@@ -21,6 +21,18 @@ var LinkedList = function() {
     return temp;
   };
 
+  list.insertNodeAfter = function(newNodeValue, addAfterThis, node) {
+    node = node || list.head;
+
+    if (node.value === addAfterThis) {
+      var temp = node.next;
+      node.next = new Node(newNodeValue);
+      node.next.next = temp;
+    } else {
+      list.insertNodeAfter(newNodeValue, addAfterThis, node.next);
+    }
+  };
+
   list.contains = function(target) {
     var arr = [];
     var head = list.head;
