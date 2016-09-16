@@ -18,6 +18,17 @@ setPrototype.remove = function(item) {
   delete this[item];
 };
 
+setPrototype.size = function(item) {
+  var counter = -1; //to compensate for _.storage property
+  for (var key in this) {
+    if (this.hasOwnProperty(key)) {
+      counter++;  
+    }
+    
+  }
+  return counter;
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
  */
