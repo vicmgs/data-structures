@@ -27,7 +27,24 @@ describe('set', function() {
   it('should not increase set size when a duplicate is added', function() {
     set.add('Mel Gibson');
     set.add('Mel Gibson');
-    expect(set.size()).to.equal(1);
+    set.add(2);
+    expect(set.size()).to.equal(2);
+  });
+
+  it('should take an item of any type', function() {
+    set.add('Mel Gibson');
+    set.add(2);
+    set.add(3);
+    set.add([1, 2, 3]);
+    set.add({});
+    set.add(false);
+    set.add(null);
+    expect(set.contains(2)).to.equal(true);
+    expect(set.contains(3)).to.equal(true);
+    expect(set.contains([1, 2, 3])).to.equal(true);
+    expect(set.contains({})).to.equal(true);
+    expect(set.contains(false)).to.equal(true);
+    expect(set.contains(null)).to.equal(true);
   });
 
 });
