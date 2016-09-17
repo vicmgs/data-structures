@@ -51,30 +51,46 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should increment the counter when a value is added', function() {
+    hashTable.insert('Steven', 'Tyler');
+    hashTable.insert('Abe', 'Tyler1');
+    hashTable.insert('Brian', 'Tyler2');
+    expect(hashTable._count).to.equal(3);
+  });
+
+  it('should decrement the counter when a value is removed', function() {
+    hashTable.insert('Steven', 'Tyler');
+    hashTable.insert('Abe', 'Tyler1');
+    hashTable.insert('Brian', 'Tyler2');
+    hashTable.remove('Steven');
+    expect(hashTable._count).to.equal(2);
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
-  xit ('should double in size when needed', function() {
+  it ('should double in size when needed', function() {
     _.each(people, function(person) {
       var firstName = person[0];
       var lastName = person[1];
       hashTable.insert(firstName, lastName);
       expect(hashTable.retrieve(firstName)).to.equal(lastName);
     });
+
     expect(hashTable._limit).to.equal(16);
   });
 
-  xit ('should halve in size when needed', function() {
-    _.each(people, function(person) {
-      var firstName = person[0];
-      var lastName = person[1];
-      hashTable.insert(firstName, lastName);
-      expect(hashTable.retrieve(firstName)).to.equal(lastName);
-    });
-    expect(hashTable._limit).to.equal(16);
-    hashTable.remove('George');
-    hashTable.remove('Dr.');
-    hashTable.remove('Steven');
-    hashTable.remove('John');
-    hashTable.remove('Mr.');
-    expect(hashTable._limit).to.equal(8);
-  });
+  // it ('should halve in size when needed', function() {
+  //   _.each(people, function(person) {
+  //     var firstName = person[0];
+  //     var lastName = person[1];
+  //     hashTable.insert(firstName, lastName);
+  //     expect(hashTable.retrieve(firstName)).to.equal(lastName);
+  //   });
+  //   expect(hashTable._limit).to.equal(16);
+  //   hashTable.remove('George');
+  //   hashTable.remove('Dr.');
+  //   hashTable.remove('Steven');
+  //   hashTable.remove('John');
+  //   hashTable.remove('Mr.');
+  //   expect(hashTable._limit).to.equal(8);
+  // });
 });
