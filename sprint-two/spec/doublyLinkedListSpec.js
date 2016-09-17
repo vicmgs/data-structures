@@ -60,7 +60,7 @@ describe('doublyLinkedList', function() {
     expect(doublyLinkedList.contains(4)).to.equal(true);
   });
 
-  it('should be able to add a node in the middle', function() {
+  it('should be able to add a node at a specified position', function() {
     doublyLinkedList.addToTail(4);
     doublyLinkedList.addToTail(5);
     doublyLinkedList.addToTail(6);
@@ -69,5 +69,35 @@ describe('doublyLinkedList', function() {
     expect(doublyLinkedList.contains(8)).to.equal(true);
   });
 
+  it('should add a node to the first position when addToHead is called', function() {
+    doublyLinkedList.addToTail(4);
+    doublyLinkedList.addToTail(5);
+    doublyLinkedList.addToTail(6);
+    doublyLinkedList.addToHead(7);
+    expect(doublyLinkedList.head.value).to.equal(7);
+  });
+
+  it('should remove the last node when removeTail is called', function() {
+    doublyLinkedList.addToTail(4);
+    doublyLinkedList.addToTail(5);
+    doublyLinkedList.addToTail(6);
+    doublyLinkedList.removeTail();
+    expect(doublyLinkedList.tail.value).to.equal(5);
+  });
+
+  it('should return the value of the correct "previous" and "next" nodes when insertNodeAfter is called', function() {
+    doublyLinkedList.addToTail(4);
+    doublyLinkedList.addToTail(6);
+    doublyLinkedList.insertNodeAfter(5, 4); 
+    expect(doublyLinkedList.head.next.value).to.equal(5);
+    expect(doublyLinkedList.tail.previous.value).to.equal(5);
+  });
+
+  it('should remove both the head and tail when removeHead is called on a list of one element', function() {
+    doublyLinkedList.addToTail(4);
+    doublyLinkedList.removeTail();
+    expect(doublyLinkedList.tail).to.equal(null);
+    expect(doublyLinkedList.head).to.equal(null);
+  });
 
 });
