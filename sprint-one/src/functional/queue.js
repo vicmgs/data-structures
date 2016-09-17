@@ -1,4 +1,4 @@
-var Queue = function() {
+var FQueue = function() {
   var someInstance = {};
 
   var counter = 0;
