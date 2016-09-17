@@ -6,12 +6,12 @@ var PSStack = function() {
 
 };
 
-Stack.prototype.push = function(val) {
+PSStack.prototype.push = function(val) {
   this.storage[this.counter] = val;
   this.counter++;
 };
 
-Stack.prototype.pop = function() {
+PSStack.prototype.pop = function() {
   if (this.counter > 0) {
     this.counter--;
   }
@@ -21,7 +21,7 @@ Stack.prototype.pop = function() {
   return temp;
 };
 
-Stack.prototype.size = function() {
+PSStack.prototype.size = function() {
   return this.counter;
 };
 
