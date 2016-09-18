@@ -38,13 +38,23 @@ treeMethods.findNode = function(value, node) {
   return result;
 };
 
+treeMethods.traverse = function(cb, node) {
+  node = node || this;
+
+  cb(node.value);
+
+  for (var i = 0; i < node.children.length; i++) {
+    node.traverse(cb, node.children[i]);
+  }
+};
+
 treeMethods.removeParent = function(value) {
   var targetNode = this.findNode(value);
   var targetParent = targetNode.parent;
   var parentValue = targetParent.value;
 
   if (targetParent.parent === null) {
-    return('Error: cannot remove head of tree');
+    return ('Error: cannot remove head of tree');
   } else {
     var grandParent = targetParent.parent;
     for (var i = 0; i < grandParent.children.length; i++) {

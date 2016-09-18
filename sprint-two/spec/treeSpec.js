@@ -119,4 +119,20 @@ describe('tree', function() {
     expect(tree.removeParent(6)).to.equal('Error: cannot remove head of tree');
   });
 
+  it('should run a callback on every node when traverse is called', function() {
+    var result = [];
+    var multiply = function (a) {
+      result.push(a * 2);
+    };
+    tree.value = 10;
+    tree.addChild(4);
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    tree.children[2].addChild(9);
+    tree.traverse(multiply);
+    expect(result).to.eql([20, 8, 14, 10, 16, 12, 18]);
+  });
+
 });
