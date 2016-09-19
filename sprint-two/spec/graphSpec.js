@@ -54,6 +54,16 @@ describe('graph', function() {
     expect(graph.hasEdge(4, 5)).to.equal(false);
   });
 
+  it('should store edges in an array', function() {
+    graph.addNode(4);
+    graph.addNode(5);
+    graph.addNode(6);
+    graph.addEdge(5, 4);
+    expect(Array.isArray(graph[4])).to.equal(true);
+    graph.removeNode(5);
+    expect(Array.isArray(graph[4])).to.equal(true);
+  });
+
   it('should execute a callback on each node in the graph', function() {
     var connectToFive = function(item) {
       graph.addEdge(item, 5);

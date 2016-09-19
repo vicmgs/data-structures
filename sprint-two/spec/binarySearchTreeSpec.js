@@ -2,7 +2,7 @@ describe('binarySearchTree', function() {
   var binarySearchTree;
 
   beforeEach(function() {
-    binarySearchTree = BinarySearchTree(5);
+    binarySearchTree = new BinarySearchTree(5);
   });
 
   it('should have methods named "insert", "contains", and "depthFirstLog', function() {
@@ -14,6 +14,7 @@ describe('binarySearchTree', function() {
   it('should insert values at the correct location in the tree', function() {
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
+    console.log(binarySearchTree);
     binarySearchTree.insert(7);
     binarySearchTree.insert(6);
     expect(binarySearchTree.left.right.value).to.equal(3);
@@ -35,5 +36,18 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(3);
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3]);
+
   });
+
+  it('should have a working breadth first log method', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(6);
+    expect(binarySearchTree.breadthFirstLog()).to.eql({ 1: [5], 2: [2, 7], 3: [3, 6, 10] });
+  });
+
+
+      
 });

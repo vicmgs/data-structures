@@ -1,4 +1,4 @@
-var Stack = function() {
+var FStack = function() {
   var someInstance = {};
 
   someInstance.counter = 0;

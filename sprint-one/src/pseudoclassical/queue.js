@@ -1,4 +1,4 @@
-var Queue = function() {
+var PSQueue = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
   this.counter = 0;
@@ -7,13 +7,13 @@ var Queue = function() {
   this.storage = {};
 };
 
-Queue.prototype.enqueue = function(val) {
+PSQueue.prototype.enqueue = function(val) {
   this.storage[this.endTrack] = val;
   this.counter++;
   this.endTrack++;
 };
 
-Queue.prototype.dequeue = function() {
+PSQueue.prototype.dequeue = function() {
   if (this.counter > 0) {
     this.counter--;
   }
@@ -25,6 +25,6 @@ Queue.prototype.dequeue = function() {
   return temp;
 };
 
-Queue.prototype.size = function() {
+PSQueue.prototype.size = function() {
   return this.counter;
 };
